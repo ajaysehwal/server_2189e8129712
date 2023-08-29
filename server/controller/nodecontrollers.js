@@ -347,8 +347,7 @@ const Student_post = (req, res) => {
     req.body.date_of_birth,
     req.body.father_name,
     req.body.mother_name,
-
-    req.body.address,
+     req.body.address,
     req.body.nationality,
     req.body.admission_no,
     req.body.age,
@@ -375,7 +374,7 @@ const Student_post = (req, res) => {
     req.body.admin_token,
     randomCode
   ]
-  const sql = "INSERT INTO `studentdata`(`student_name`, `date_of_birth`, `father_name`, `mother_name`, `address`, `nationality`, `admission_no`, `age`, `religion`, `city`, `phone`, `parents_phone`, `previous_school_name`, `email`, `transfer_certificate`, `physical_handicap`, `house`, `student_category`, `select_class`,`section`,`state`, `blood_group`,`student_document`, `birth_certificate`, `student_image`, `additional_information`, `other_document`,`gender`,`admin_token`,`student_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+  const sql = "INSERT INTO `studentdata`(`student_name`, `date_of_birth`, `father_name`, `mother_name`, `address`, `nationality`, `admission_no`, `age`, `religion`, `city`, `phone`, `parents_phone`, `previous_school_name`, `email`, `transfer_certificate`, `physical_handicap`, `house`, `student_category`, `select_class`,`section`,`state`, `blood_group`,`student_document`, `birth_certificate`, `student_image`, `additional_information`, `other_document`,`gender`,`admin_token`,`student_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
   db.query(sql, studentdata, (err, data) => {
     if (err) {
       return err
