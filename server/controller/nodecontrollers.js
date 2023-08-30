@@ -457,6 +457,8 @@ const poststudentdata_excel = (req, res) => {
     const baseDate = new Date(Date.UTC(1900, 0, 1));
     const realDate = new Date(baseDate.getTime() + (data[1] || 0 - 2) * 86400000).toISOString().slice(0, 10);
 
+  const randomCode = crypto.randomBytes(6).toString('hex').toUpperCase();
+
     const studentdata = [
       data[0] || '',
       realDate || 0,
@@ -476,23 +478,16 @@ const poststudentdata_excel = (req, res) => {
       data[15] || '',
       data[16] || '',
       data[17] || '',
+      req.body.class,
+      req.body.section,
       data[18] || '',
       data[19] || '',
-     req.body.class,
-     req.body.section,
+    
       data[20] || '',
-      data[21] || '',
-      data[22] || '',
-      data[23] || '',
-      data[24] || '',
-      data[25] || '',
-      data[26] || '',
-      data[27] || '',
-      data[28] || '',
-      data[29] || '',
       req.body.admin_token,
+     randomCode
     ]
-    const sql = "INSERT INTO `studentdata`(`student_name`, `date_of_birth`, `father_name`,`mother_name`, `mother_tougue`, `address`, `nationality`, `admission_no`, `age`, `religion`, `city`, `phone`, `parents_phone`, `previous_school_name`, `class_in_which_was_studing`, `email`, `transfer_certificate`, `physical_handicap`, `house`, `student_category`, `select_class`, `section`, `place_birth`, `state`, `blood_group`, `dateofleaving`, `student_document`, `birth_certificate`, `student_image`, `additional_information`, `other_document`,`gender`,`admin_token`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+    const sql = "INSERT INTO `studentdata`(`student_name`, `date_of_birth`, `father_name`,`mother_name`, `address`, `nationality`, `admission_no`, `age`, `religion`, `city`, `phone`, `parents_phone`, `previous_school_name`, `email`, `transfer_certificate`, `physical_handicap`, `house`, `student_category`, `select_class`, `section`, `state`, `blood_group`,`gender`,`admin_token`,`student_code`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
     db.query(sql, studentdata, (err, data) => {
       if (err) {
         res.send(err)
