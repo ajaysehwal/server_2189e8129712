@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(cors());
 app.use('/images/studentfiles',express.static('images/studentfiles'));
 app.use('/images/teachersfiles',express.static('images/teachersfiles'));
+app.use('/images/nonteacherfiles',express.static('images/nonteacherfiles'));
 
 const controllers = require("./controller/nodecontrollers");
 app.get("/", controllers.defaultapi);
