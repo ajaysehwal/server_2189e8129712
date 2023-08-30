@@ -22,7 +22,6 @@ const signupemail = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   const emailid = req.params.email;
-  console.log(emailid);
   const sql = "SELECT * FROM `signupstep1` WHERE email=?";
   db.query(sql, emailid, (err, data) => {
     if (err) {
@@ -59,7 +58,6 @@ const apisignupid = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   const userid = req.params.id;
-  console.log(userid);
   const sql = "SELECT * FROM `signupstep1` WHERE user_token=?";
   db.query(sql, userid, (err, data) => {
     if (err) {
@@ -89,7 +87,6 @@ const register_address_get_id = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   const userid = req.params.id;
-  // console.log(emailid);
   const sql = "SELECT * FROM `signupstep2-address` WHERE user_token=?";
   db.query(sql, userid, (err, data) => {
     if (err) {
@@ -146,7 +143,6 @@ const admindata_get_id = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   const userid = req.params.id;
-  // console.log(emailid);
   const sql = "SELECT * FROM `signup-info` WHERE user_token=?";
   db.query(sql, userid, (err, data) => {
     if (err) {
@@ -161,7 +157,6 @@ const admindata_get_email = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
   const userid = req.params.id;
-  // console.log(emailid);
   const sql = "SELECT * FROM `signup-info` WHERE admin_email=?";
   db.query(sql, userid, (err, data) => {
     if (err) {
@@ -174,7 +169,6 @@ const admindata_get_email = (req, res) => {
 const admindata_get = (req, res) => {
   res.setHeader("Content-Type", "application/json");
 
-  // console.log(emailid);
   const sql = "SELECT * FROM `signup-info`";
   db.query(sql, (err, data) => {
     if (err) {
@@ -218,7 +212,6 @@ const classes_post = (req, res) => {
 };
 const classes_get_id = (req, res) => {
   const userid = req.params.id;
-  // console.log(emailid);
   const sql = "SELECT * FROM `studentclasses` WHERE user_token=?";
   db.query(sql, userid, (err, data) => {
     if (err) {
@@ -231,7 +224,6 @@ const classes_get_id = (req, res) => {
 
 const classes_get_search = (req, res) => {
   const searchTerm = req.params.id;
-  console.log(searchTerm);
   const query = 'SELECT * FROM `studentclasses` WHERE `class_name` LIKE ?';
   db.query(query, [`%${searchTerm}%`], (error, results) => {
     if (error) {
@@ -648,8 +640,7 @@ const class_section_get_id = (req, res) => {
 }
 const class_section_get_class = (req, res) => {
   const { classes, user_id } = req.params;
-  console.log(classes);
-  console.log(user_id);
+  
   const query = "SELECT * FROM `class_sections` WHERE class=? AND user_token=?";
   db.query(query, [classes, user_id], (err, data) => {
     if (err) {
