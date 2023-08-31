@@ -507,9 +507,7 @@ const postteacher_data = (req, res) => {
     req.body.qualification,
     req.body.martial_status,
     req.body.address,
-    req.body.facebook,
-    req.body.twitter,
-    req.body.linkedin,
+   
     req.body.department,
     req.body.dateofjoining,
     req.body.joiningsalary,
@@ -524,7 +522,7 @@ const postteacher_data = (req, res) => {
     randomCode
   ]
 
-  const sql = "INSERT INTO `teachersdata`(`name`, `dob`, `gender`, `religion`, `bloodgroup`, `email`, `phone`, `qualification`, `martialstatus`, `address`, `facebook`, `twitter`, `linkedin`, `department`, `dateofjoining`, `joiningsalary`, `status`, `accountholdername`, `accountnumber`, `bankname`, `branch`, `identifydocument`, `img`, `school_id`, `teacher_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+  const sql = "INSERT INTO `teachersdata`(`name`, `dob`, `gender`, `religion`, `bloodgroup`, `email`, `phone`, `qualification`, `martialstatus`, `address`, `department`, `dateofjoining`, `joiningsalary`, `status`, `accountholdername`, `accountnumber`, `bankname`, `branch`, `identifydocument`, `img`, `school_id`, `teacher_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
   db.query(sql, data, (err, data) => {
     if (err) {
        res.send(err);
