@@ -549,9 +549,7 @@ const nonteacher_post=(req,res)=>{
     req.body.qualification,
     req.body.martial_status,
     req.body.address,
-    req.body.facebook,
-    req.body.twitter,
-    req.body.linkedin,
+  
     req.body.department,
     req.body.dateofjoining,
     req.body.joiningsalary,
@@ -565,7 +563,7 @@ const nonteacher_post=(req,res)=>{
     req.body.school_id,
     randomCode,
   ]
-  const sql="INSERT INTO `nonteachingstaff`(`name`, `dob`, `gender`, `religion`, `bloodgroup`, `email`, `phone`, `qualification`, `martialstatus`, `address`, `facebook`, `twitter`, `linkedin`, `department`, `dateofjoining`, `joiningsalary`, `status`, `accountholdername`, `accountnumber`, `bankname`, `branch`, `identitydocument`, `img`, `school_id`, `teacher_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+  const sql="INSERT INTO `nonteachingstaff`(`name`, `dob`, `gender`, `religion`, `bloodgroup`, `email`, `phone`, `qualification`, `martialstatus`, `address`, `department`, `dateofjoining`, `joiningsalary`, `status`, `accountholdername`, `accountnumber`, `bankname`, `branch`, `identitydocument`, `img`, `school_id`, `teacher_id`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
    db.query(sql,sqldata,(err,data)=>{
     if(err){
       res.send(err);
