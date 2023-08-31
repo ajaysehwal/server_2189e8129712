@@ -549,7 +549,6 @@ const nonteacher_post=(req,res)=>{
     req.body.qualification,
     req.body.martial_status,
     req.body.address,
-  
     req.body.department,
     req.body.dateofjoining,
     req.body.joiningsalary,
@@ -558,8 +557,8 @@ const nonteacher_post=(req,res)=>{
     req.body.accountnumber,
     req.body.bankname,
     req.body.branch,
-    file1[0].path,
-    file2[0].path,
+    file1[0].path||'',
+    file2[0].path||'',
     req.body.school_id,
     randomCode,
   ]
