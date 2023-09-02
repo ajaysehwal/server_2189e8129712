@@ -1124,9 +1124,9 @@ const update_student_data=(req,res)=>{
       req.body.select_class,
       req.body.section,
       req.body.state,
-      file1[0].path,
+      file1[0].path||'',
       req.body.select_document,
-      file2[0].path,
+      file2[0].path||'',
       student_code,
     ]
     console.log(studentdata);
