@@ -1104,16 +1104,42 @@ const  school_announcement_id=(req,res)=>{
   )}
 const update_student_data=(req,res)=>{
     const student_code=req.params.id;
-    console.log(student_code);
     const { file1, file2 } = req.files;
   
-  console.log(req.files);
-  if(req.files==null){
-    console.log("done");
+  if (!req.files) {
+     const studentdata = [
+      req.body.student_name,
+      req.body.date_of_birth,
+      req.body.father_name,
+      req.body.mother_name,
+      req.body.address,
+      req.body.admission_no,
+      req.body.age,
+      req.body.religion,
+      req.body.city,
+      req.body.phone,
+      req.body.parents_phone,
+      req.body.previous_school_name,
+      req.body.email,
+      req.body.house,
+      req.body.select_class,
+      req.body.section,
+      req.body.state,
+      req.body.select_document,
+     student_code,
+    ]
+    console.log(studentdata);
+    const sql='UPDATE `studentdata` SET `student_name`=?,`date_of_birth`=?,`father_name`=?,`mother_name`=?,`address`=? ,`admission_no`=?,`age`=?,`religion`=?,`city`=?,`phone`=?,`parents_phone`=?,`previous_school_name`=?,`email`=?,`house`=?,`select_class`=?,`section`=?,`state`=?,`birth_certificate`=? WHERE `student_code`=?';
+      db.query(sql,studentdata,(err,data)=>{
+        if(err){
+          res.status(404).json({message:"not updated"});
+        }else{
+          res.status(200).json({message:'student updated successfully'});
+        }
+      })
+
   }else{
-    console.log("not done");
-  }
-    const studentdata = [
+      const studentdata = [
       req.body.student_name,
       req.body.date_of_birth,
       req.body.father_name,
@@ -1147,6 +1173,7 @@ const update_student_data=(req,res)=>{
       })
 
   }
+   }
 
 module.exports = {
   admindata_get_email,
