@@ -162,8 +162,14 @@ app.post('/nonteacherapi',nonteacherupload.fields([
 app.get('/nonteacherapi/:school_id',controllers.nonteacher_get);
 app.get('/nonteacherapi/:school_id/:id',controllers.nonteacher_get_id);
 app.get('/studentfee/:school_id/:classes',controllers.managestudentfee_get_by_school_id_class);
-app.get('/studentsubjectsbyclass/:classes',controllers.schoolsubject_get_id_class,)
-app.put('/studentupdated/:id',studentupload.fields([
+app.get('/studentsubjectsbyclass/:classes',controllers.schoolsubject_get_id_class)
+const checkFileField = (req, res, next) => {
+  if (!req.files) {
+    return res.status(400).json({ error: 'File Not Updated' });
+  }
+  next();
+};
+app.put('/studentupdated/:id',checkFileField,studentupload.fields([
   { name: 'file1', maxCount: 1 },
   { name: 'file2', maxCount: 1 },
 ]),controllers.update_student_data);
