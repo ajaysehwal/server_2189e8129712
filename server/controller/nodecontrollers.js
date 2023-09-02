@@ -1128,7 +1128,6 @@ const update_student_data=(req,res)=>{
       req.body.select_document,
      student_code,
     ]
-    console.log(studentdata);
     const sql='UPDATE `studentdata` SET `student_name`=?,`date_of_birth`=?,`father_name`=?,`mother_name`=?,`address`=? ,`admission_no`=?,`age`=?,`religion`=?,`city`=?,`phone`=?,`parents_phone`=?,`previous_school_name`=?,`email`=?,`house`=?,`select_class`=?,`section`=?,`state`=?,`birth_certificate`=? WHERE `student_code`=?';
       db.query(sql,studentdata,(err,data)=>{
         if(err){
@@ -1162,7 +1161,6 @@ const update_student_data=(req,res)=>{
       file2[0].path||'',
       student_code,
     ]
-    console.log(studentdata);
     const sql='UPDATE `studentdata` SET `student_name`=?,`date_of_birth`=?,`father_name`=?,`mother_name`=?,`address`=? ,`admission_no`=?,`age`=?,`religion`=?,`city`=?,`phone`=?,`parents_phone`=?,`previous_school_name`=?,`email`=?,`house`=?,`select_class`=?,`section`=?,`state`=?,`student_document`=?,`birth_certificate`=?,`student_image`=? WHERE `student_code`=?';
       db.query(sql,studentdata,(err,data)=>{
         if(err){
