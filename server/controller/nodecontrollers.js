@@ -1130,11 +1130,10 @@ const update_student_data=(req,res)=>{
       student_code,
     ]
     console.log(studentdata);
-    res.send("done");
     const sql='UPDATE `studentdata` SET `student_name`=?,`date_of_birth`=?,`father_name`=?,`mother_name`=?,`address`=? ,`admission_no`=?,`age`=?,`religion`=?,`city`=?,`phone`=?,`parents_phone`=?,`previous_school_name`=?,`email`=?,`house`=?,`select_class`=?,`section`=?,`state`=?,`student_document`=?,`birth_certificate`=?,`student_image`=? WHERE `student_code`=?';
-      db.query(sql,sqldata,(err,data)=>{
+      db.query(sql,studentdata,(err,data)=>{
         if(err){
-          res.send(err);
+          res.status(404).json({message:"not updated"});
         }else{
           res.status(200).json({message:'student updated successfully'});
         }
