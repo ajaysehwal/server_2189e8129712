@@ -1106,6 +1106,7 @@ const update_student_data=(req,res)=>{
     const student_code=req.params.id;
     console.log(student_code);
     const { file1, file2 } = req.files;
+  console.log(req.files);
     const studentdata = [
       req.body.student_name,
       req.body.date_of_birth,
