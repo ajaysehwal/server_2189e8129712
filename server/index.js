@@ -163,9 +163,33 @@ app.get('/nonteacherapi/:school_id',controllers.nonteacher_get);
 app.get('/nonteacherapi/:school_id/:id',controllers.nonteacher_get_id);
 app.get('/studentfee/:school_id/:classes',controllers.managestudentfee_get_by_school_id_class);
 app.get('/studentsubjectsbyclass/:classes',controllers.schoolsubject_get_id_class)
+app.put('/studentupdated/:id',controllers.update_student_data);
+app.put('/studentupdateddocs/:id',studentupload.fields([
+  {name:'file1',maxCount:1},
 
-app.put('/studentupdated/:id',studentupload.fields([
-  { name: 'file1', maxCount: 1 },
-  { name: 'file2', maxCount: 1 },
-]),controllers.update_student_data);
+]),controllers.studentdocupdate)
+app.put('/studentupdatedimage/:id',studentupload.fields([
+  {name:'file2',maxCount:1},
+
+]),controllers.studentimageupdate);
+app.put('/teacherupdate/:id',controllers.updateteacher);
+app.put('/nonteacherupdate/:id',controllers.updatenonteacher)
+app.put('/teacherdoc/:id',teacherupload.fields([
+  {name:'file1',maxCount:1},
+
+]),controllers.teacherdocupdate)
+app.put('/teacherimg/:id',teacherupload.fields([
+  {name:'file2',maxCount:1},
+
+]),controllers.teacherimgupdate)
+app.put('/nonteacherdoc/:id',nonteacherupload.fields([
+  {name:'file1',maxCount:1},
+
+]),controllers.nonteacherdocupdate)
+app.put('/nonteacherimg/:id',nonteacherupload.fields([
+  {name:'file2',maxCount:1},
+
+]),controllers.nonteacherimgupdate)
+
+
 app.listen(process.env.PORT)  
