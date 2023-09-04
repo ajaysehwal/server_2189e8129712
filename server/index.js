@@ -81,7 +81,6 @@ const excelupload = multer({ storage: excelfilesstorage })
 app.post('/apistudents',studentupload.fields([
   { name: 'file1', maxCount: 1 },
   { name: 'file2', maxCount: 1 },
-  { name: 'file3', maxCount: 1 },
 ]),controllers.Student_post);
 
 app.get('/apistudents/:school_id',controllers.getstudent_data);
